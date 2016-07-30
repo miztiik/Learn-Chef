@@ -29,13 +29,15 @@
 
 ## `bootstrap` the Chef node[s]
 > We call the process that installs `chef-client` on a node and the initial checkin to the Chef server _bootstrapping_ the node.
+
 #### Bootstrap using key-based authentication
 - Lets tag our node as `chef-node01`. _I used the same tag in EC2 as well to remember it easily_.
 - Copy the EC2 key to your workstation to `./chef/chef-node-key.pem`
 
-	```sh
-	knife bootstrap 54.211.19.162 --ssh-user ec2-user --sudo --identity-file /chef-repo/.chef/chef-node-key.pem --node-name chef-node01
-	```
+```sh
+knife bootstrap 54.211.19.162 --ssh-user ec2-user --sudo --identity-file /chef-repo/.chef/chef-node-key.pem --node-name chef-node01
+```
+
 - Confirm the list of nodes
 
 ```sh
@@ -71,15 +73,19 @@ end
 ```
 
 - Upload this new code to your chef server by using below command
+
 ```sh
 knife cookbook upload learn-httpd
 ```
- -_If you want to double-check your cook books `knife cookbook list`
-- Now go to node and run chef-client to get latest cookbooks from servers.
+
+ - _If you want to double-check your cook books `knife cookbook list`
+
+- Now go to your chef node and run chef-client to get latest cookbooks from servers.
 ```sh
-Chef-client
+chef-client
 ```
 _Note: even though our code is currect. It cant install apache. Because we haven’t set this node to run recipe. To do that we should run below command._
+
 ```sh
 knife node run_list add chef-node01 "recipe[learn-httpd]"
 ```
