@@ -1,4 +1,7 @@
-# Hosted Chef-Server Preparation
+# How-To setup Chef to manage your servers.
+This tutorial will assist you in setting up a `Chef Server` - hosted at Chef.io , `Chef Workstation` & `Chef Nodes` running on AWS as EC2 Instances. 
+
+# Hosted Chef Server Preparation
  - Create account in chef from manage.chef.io website. 
  - Create a organization
 
@@ -8,18 +11,14 @@
  - Another one to act as the remote node on AWS account
 - The security groups should have the following ports open, `22, 80, 443`
  
-## Configure Chef Workstation
-- Enable rootlogin and password authentication in /etc/ssh/sshd_config file.
-
-	```sh
-	sed -ri 's/#   PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/ssh_config
-	echo "PermitRootLogin yes" >> /etc/ssh/ssh_config
-	yum install unzip -y
-	```
-- Download Chef starter kit from hosted Chef-Server
- - Copy starter kit into workstation and unzip in /root directory. It generates chef-repo
+# Configure Chef Workstation
+- Download Chef starter kit from hosted Chef Server
+ - SCP the starter kit into your workstation and unzip in /root directory. It generates `/chef-repo`.
  
 	```sh
+	yum install unzip -y
+	cd /
+	unzip chef-starter.zip
 	cd /chef-repo
 	curl -L https://www.opscode.com/chef/install.sh | bash
 	```
@@ -27,7 +26,7 @@
  
 - We have configured our Chef Server(hosted in chef site) and Chef workstation, Authentication is established by the `Starter-Kit`. 
 
-## `bootstrap` the Chef node[s]
+# Chef Node[s] `bootstrapping` 
 > We call the process that installs `chef-client` on a node and the initial checkin to the Chef server _bootstrapping_ the node.
 
 #### Bootstrap using key-based authentication
