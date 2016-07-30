@@ -49,7 +49,7 @@ or
 knife node show chef-node01
 ```
 	
-- Login to chef node and edit /etc/chef/client.rb file add below line
+- Login to chef node and edit `/etc/chef/client.rb` file add below line
 	```log_level	:info ```
 
 
@@ -87,10 +87,19 @@ knife cookbook upload learn-httpd
 ```sh
 chef-client
 ```
-_Note: even though our code is currect. It cant install apache. Because we haven’t set this node to run recipe. To do that we should run below command._
+ - _Note: even though our code is currect. It cant install apache. Because we haven’t set this node to run recipes. To do that we should run below command._
 
 ```sh
 knife node run_list add chef-node01 "recipe[learn-httpd]"
+```
+ 
+ - Run `chef-client` from your node to run the recipe.
+
+- Load the webserver page
+```sh
+curl localhost
+or
+curl <your_public_ip>
 ```
 
 # Clean up your environment
