@@ -7,19 +7,23 @@
  - One for workstation and 
  - Another one to act as the remote node on AWS account
 - Enable rootlogin and password authentication in /etc/ssh/sshd_config file.
+
 	```sh
 	sed -ri 's/#   PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/ssh_config
 	echo "PermitRootLogin yes" >> /etc/ssh/ssh_config
 	yum install unzip -y
 	```
-- The security groups should have the following ports open, `22, 80, 443`
+
+ - The security groups should have the following ports open, `22, 80, 443`
 - Download Chef starter kit from Administration-starter kit
 - Copy starter kit into workstation and unzip in /root directory. It generates chef-repo
-- Download and install chef software with below command
+- Download and install chef software
+
 	```sh
 	curl -L https://www.opscode.com/chef/install.sh | bash
 	```
 - As of now we have configured Chef Server(hosted in chef site) and Chef workstation. Authentication files between chef server and chef workstation copied through starter ket.  Now we should copies these authentication files from chef workstation to chef node. It helps chef node to communicate with chef-server. It should run from /root/chef-repo path. 
+	
 	```sh
 	knife bootstrap <server IP/ Hostname> -x root -P ravis829 -N <Tag>
 	```
