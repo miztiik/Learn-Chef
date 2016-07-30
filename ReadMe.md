@@ -35,10 +35,13 @@
 - Copy the EC2 key to your workstation to `./chef/chef-node-key.pem`
 
 ```sh
-knife bootstrap 54.211.19.162 --ssh-user ec2-user --sudo --identity-file /chef-repo/.chef/chef-node-key.pem --node-name chef-node01
+knife bootstrap 54.211.19.162 \
+                --ssh-user ec2-user --sudo \
+				--identity-file /chef-repo/.chef/chef-node-key.pem \
+				--node-name chef-node01
 ```
 
-- Confirm the list of nodes
+- To confirm the list of nodes registered to the Chef-Server
 
 ```sh
 knife node list
@@ -78,7 +81,7 @@ end
 knife cookbook upload learn-httpd
 ```
 
- - _If you want to double-check your cook books `knife cookbook list`
+ - _If you want to double-check your cook books `knife cookbook list`_
 
 - Now go to your chef node and run chef-client to get latest cookbooks from servers.
 ```sh
