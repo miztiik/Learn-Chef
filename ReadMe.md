@@ -9,6 +9,7 @@
  - Enable rootlogin and password authentication in /etc/ssh/sshd_config file.
 	```sh
 	sed -ri 's/#PermitRootLogin no/#PermitRootLogin yes/g' /etc/ssh/ssh_config
+	
 	sed -ri 's/# PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/ssh_config
 	```
  - The security groups should have the following ports open, `22, 80, 443`
