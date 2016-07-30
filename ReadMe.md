@@ -1,11 +1,18 @@
 # Hosted Chef-Server Preparation
- - Create account with chef from manage.chef.io website. 
- - Create a organization in chef-server
+ - Create account in chef from manage.chef.io website. 
+ - Create a organization
 
 # Create EC2 Instances to act as nodes
- - Create two instances workstation and node on AWS account
- - Enable rootlogin and password authentication on /etc/ssh/sshd_config file.
- - Download chef starter kit from Administration  starter kit
+ - Create two instances,
+  - One for workstation and 
+  - Another one to act as the remote node on AWS account
+ - Enable rootlogin and password authentication in /etc/ssh/sshd_config file.
+	```sh
+	sed -ri 's/#PermitRootLogin no/#PermitRootLogin yes/g' /etc/ssh/ssh_config
+	sed -ri 's/# PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/ssh_config
+	```
+ - The security groups should have the following ports open, `22, 80, 443`
+ - Download Chef starter kit from Administration-starter kit
  - Copy starter kit into workstation and unzip in /root directory. It generates chef-repo
  - Download and install chef software with below command
 ```sh
