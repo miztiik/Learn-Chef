@@ -20,16 +20,26 @@ knife bootstrap <server IP/ Hostname> -x root -P ravis829 -N <Tag>
 
 
 # Creating apache cookbook
-1.	Knife cookbook create apache
-2.	Go inside directory cookbooks/apache/recipes 
-cd cookbooks/apache/recipes
-3.	Edit default.rb file add below code to install httpd package.
+- Knife cookbook create apache
+- Go inside directory cookbooks/apache/recipes 
+```sh	
+- cd cookbooks/apache/recipes
+```
+- Edit default.rb file add below code to install httpd package.
+```sh
 package "httpd" do
-	action :install
+ action :install
 end
-4.	Upload this new code to your chef server by using below command
+```
+- Upload this new code to your chef server by using below command
+```sh
 Knife cookbook upload apache
-5.	Now go to node and run chef-client to get latest cookbooks from servers.
+```
+- Now go to node and run chef-client to get latest cookbooks from servers.
+```sh
 Chef-client
-Note: even though our code is currect.. it cant install apache. Because we haven’t set this node to run recipe. To do that we should run below command.
-knife node run_list add valaxynode “recipe[apache]”
+```
+_Note: even though our code is currect. It cant install apache. Because we haven’t set this node to run recipe. To do that we should run below command._
+```sh
+knife node run_list add valaxynode "recipe[apache]"
+```
