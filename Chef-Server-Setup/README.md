@@ -39,7 +39,7 @@ By default, accounts required by the Chef server are created during setup. If yo
 
  - [Official Installation Instructions](https://docs.chef.io/install_server.html#standalone)
  
-### Install Chef server.
+### Download & Install Chef server.
 Run this command to install Chef server. This will install the base Chef system onto the server. If you have selected a server with less powerful hardware than the recommended amount, this step may fail.
 
 ```sh
@@ -57,12 +57,27 @@ Call the `reconfigure` command, which configures the components that make up the
 chef-server-ctl reconfigure
 ```
 
-###
+### Create an Admin User and Organization
+|               Item | Description                             | Notes and examples                 |
+|:------------------:|:---------------------------------------:|:----------------------------------:|
+|  `ADMIN_USER_NAME` | user name for the administrator account | `mystique`, `admin`                |
+|   `ADMIN_PASSWORD` | password for the administrator account  | `ExampleTempPassKey`                           |
+| `ADMIN_FIRST_NAME` | administrator's first name              | `Poseidon`                         |
+|  `ADMIN_LAST_NAME` | administrator's last name               | `Trident`                         |
+|      `ADMIN_EMAIL` | administrator's email address           | `13oct08@quantumfoam.uni.me`       |
+|    `ORG_FULL_NAME` | your organization's full name           | `Mystique Corp.`                   |
+|   `ORG_SHORT_NAME` | your organization's abbreviated name    | `miztiik`                         |
+
 
 ```sh
-chef-server-ctl user-create USER_NAME FIRST_NAME LAST_NAME EMAIL 'PASSWORD' --filename FILE_NAME
+chef-server-ctl user-create mystique Poseidon Trident 13oct08@quantumfoam.uni.me ExampleTempPassKey --filename mystique.pem
 ```
 
+### Create the organization
+
+```sh
+chef-server-ctl org-create miztiik "Mystique Corp." --association_user mystique
+```
 
 ### Install the management console and reporting feature
 
