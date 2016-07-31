@@ -22,7 +22,8 @@ This tutorial will assist you in setting up a `Chef Server` - hosted at Chef.io 
 	cd /chef-repo
 	curl -L https://www.opscode.com/chef/install.sh | bash
 	```
- - Validate your connection to the Chef server, One way to do that is to run the `knife ssl check` command. 
+ - Validate the SSL certificate & authenticate calls to Chef Server `knife ssl check`
+ - Validate your connection to the Chef server, One way to do that is to run the `knife client list` command. 
  
 - We have configured our Chef Server(hosted in chef site) and Chef workstation, Authentication is established by the `Starter-Kit`. 
 
