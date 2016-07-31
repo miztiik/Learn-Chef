@@ -35,12 +35,20 @@ Ensure your Chef server is reachable through it FQDN
 ### User & Group Accounts
 By default, accounts required by the Chef server are created during setup. If your environment has restrictions on the creation of local user and group accounts that will prevent these accounts from being created automatically during setup, you will need to create these accounts.
 
-## Download and Install the Chef Server software
+## Install & Configure the Chef Server
 
  - [Official Installation Instructions](https://docs.chef.io/install_server.html#standalone)
  
-### 
-	
+### Install Chef server.
+Run this command to install Chef server.
+
 ```sh
 curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-server
 ```
+
+_Alternatively, you can [download and install the package manually](https://downloads.chef.io/chef-server/)._
+
+
+
+
+
