@@ -35,10 +35,10 @@ This tutorial will assist you in setting up a `Chef Server` - hosted at Chef.io 
 - Copy the EC2 key to your workstation to `./chef/chef-node-key.pem`
 
 ```sh
-knife bootstrap 54.211.19.162 \
+knife bootstrap <EC2_IP_Addr> \
                 --ssh-user ec2-user --sudo \
-				--identity-file /chef-repo/.chef/chef-node-key.pem \
-				--node-name chef-node01
+		--identity-file /chef-repo/.chef/<AWS_SSH_Key> \
+		--node-name chef-node01
 ```
 
 - To confirm the list of nodes registered to the Chef-Server
